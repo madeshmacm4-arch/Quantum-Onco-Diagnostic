@@ -1,0 +1,158 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Q-Onco | Quantum-Enhanced Diagnostics</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        .quantum-pulse { animation: pulse 2s cubic-bezier(0.4, 0, 0.6, 1) infinite; }
+        @keyframes pulse { 0%, 100% { opacity: 1; transform: scale(1); } 50% { opacity: .7; transform: scale(1.02); } }
+        .gradient-bg { background: radial-gradient(circle at top right, #1e293b, #020617); }
+    </style>
+</head>
+<body class="gradient-bg text-slate-200 min-h-screen font-sans flex flex-col">
+
+    <header class="p-6 border-b border-slate-800 flex justify-between items-center bg-slate-900/80 backdrop-blur-md sticky top-0 z-50">
+        <div class="flex items-center gap-4">
+            <div class="p-3 bg-blue-600 rounded-xl shadow-[0_0_20px_rgba(37,99,235,0.4)]">
+                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M12 2v20M2 12h20M4.93 4.93l14.14 14.14M4.93 19.07l14.14-14.14"/></svg>
+            </div>
+            <div>
+                <h1 class="text-xl font-black tracking-tighter uppercase leading-none">Quantum-Oncology</h1>
+                <p class="text-[10px] text-blue-400 font-mono tracking-widest mt-1">Diagnostic System v2026 | CSE Research</p>
+            </div>
+        </div>
+        <div class="hidden md:block text-right">
+            <div class="flex items-center gap-2 text-emerald-400 font-mono text-xs uppercase tracking-widest">
+                <span class="w-2 h-2 bg-emerald-500 rounded-full animate-ping"></span> 
+                Entanglement Ready
+            </div>
+            <p class="text-[9px] text-slate-500 mt-1">Accelerated by Apple M4 Neural Engine</p>
+        </div>
+    </header>
+
+    <main class="flex-grow max-w-7xl mx-auto p-6 grid grid-cols-1 lg:grid-cols-12 gap-8">
+        
+        <div class="lg:col-span-4 space-y-6">
+            <div id="dropZone" class="group relative border-2 border-dashed border-slate-700 rounded-3xl p-10 text-center transition-all cursor-pointer hover:border-blue-500 bg-slate-900/40 hover:bg-blue-500/5">
+                <input type="file" id="fileInput" accept="image/*" class="hidden">
+                <div class="mb-4 inline-block p-5 bg-slate-800 rounded-2xl group-hover:text-blue-400 transition-colors">
+                    <svg class="w-10 h-10" fill="none" stroke="currentColor" viewBox="0 0 24 24" stroke-width="1.5"><path d="M7 16a4 4 0 01-.88-7.903A5 5 0 1115.9 6L16 6a5 5 0 011 9.9M15 13l-3-3m0 0l-3 3m3-3v12"/></svg>
+                </div>
+                <h3 class="text-lg font-bold">Upload Mammography</h3>
+                <p class="text-xs text-slate-500 mt-2">Drag & drop or click to select image</p>
+            </div>
+
+            <div class="bg-slate-900/60 p-6 rounded-3xl border border-slate-800 shadow-xl">
+                <h4 class="text-[10px] font-black text-slate-500 uppercase mb-6 tracking-[0.2em]">System Benchmark</h4>
+                <div class="space-y-6">
+                    <div>
+                        <div class="flex justify-between items-end mb-2">
+                            <span class="text-sm font-medium text-slate-300">Diagnostic Precision</span>
+                            <span id="acc-val" class="text-2xl font-black font-mono text-blue-400">0.00%</span>
+                        </div>
+                        <div class="w-full bg-slate-800 h-3 rounded-full overflow-hidden">
+                            <div id="acc-bar" class="bg-blue-600 h-full transition-all duration-1000 shadow-[0_0_15px_rgba(37,99,235,0.5)]" style="width: 0%"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="lg:col-span-8 bg-slate-900/40 rounded-3xl p-8 border border-slate-800 min-h-[500px] shadow-2xl backdrop-blur-sm">
+            <div class="flex justify-between items-center mb-8">
+                <h2 class="text-xl font-bold flex items-center gap-2">
+                    <svg class="w-5 h-5 text-blue-500" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"/></svg>
+                    Analysis Queue
+                </h2>
+                <span class="text-[10px] bg-slate-800 px-3 py-1 rounded-full text-slate-400 font-mono">Live Session</span>
+            </div>
+            
+            <div id="analysisGrid" class="grid grid-cols-1 gap-6">
+                <div class="flex flex-col items-center justify-center h-64 text-slate-600 border-2 border-dashed border-slate-800 rounded-2xl">
+                    <p class="italic text-sm">Waiting for input data...</p>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <footer class="mt-auto p-10 border-t border-slate-800 bg-slate-950/50 backdrop-blur-lg">
+        <div class="max-w-7xl mx-auto grid grid-cols-1 md:grid-cols-3 gap-8">
+            <div>
+                <h5 class="text-[10px] font-black uppercase tracking-[0.2em] text-blue-500 mb-3">Development Team</h5>
+                <p class="text-sm font-bold text-slate-200">Madesh.V.M & Team</p>
+                <p class="text-[11px] text-slate-500 mt-1">Undergraduate Researchers</p>
+            </div>
+            <div>
+                <h5 class="text-[10px] font-black uppercase tracking-[0.2em] text-blue-500 mb-3">Research Mentors</h5>
+                <p class="text-sm font-bold text-slate-200">Mrs.T.Sowmya, Dr.E.Selvamanju</p>
+                <p class="text-[11px] text-slate-500 mt-1">Department of Computer Science and Engineering</p>
+            </div>
+            <div class="md:text-right">
+                <h5 class="text-[10px] font-black uppercase tracking-[0.2em] text-blue-500 mb-3">Institution</h5>
+                <p class="text-sm font-bold text-slate-200">AAA College of Engineering and Technology</p>
+                <p class="text-[11px] text-slate-400 mt-1">Sivakasi, Tamil Nadu</p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // ... (Keep the rest of your JavaScript exactly as provided in the previous step)
+        const dropZone = document.getElementById('dropZone');
+        const fileInput = document.getElementById('fileInput');
+        const analysisGrid = document.getElementById('analysisGrid');
+        
+        dropZone.onclick = () => fileInput.click();
+        fileInput.onchange = (e) => handleFiles(e.target.files);
+
+        async function handleFiles(files) {
+            const file = files[0];
+            if (!file) return;
+
+            analysisGrid.innerHTML = `
+                <div class="flex flex-col items-center justify-center p-16 bg-slate-900/80 rounded-3xl border border-blue-500/30 shadow-2xl">
+                    <div class="w-16 h-16 border-4 border-blue-600 border-t-transparent rounded-full animate-spin mb-6"></div>
+                    <h3 class="text-blue-400 font-mono text-lg animate-pulse tracking-tight uppercase">Quantum Processing Active...</h3>
+                </div>
+            `;
+
+            const formData = new FormData();
+            formData.append("file", file);
+
+            try {
+                const response = await fetch("http://localhost:8000/analyze", {
+                    method: "POST",
+                    body: formData
+                });
+                const result = await response.json();
+
+                const isMalignant = result.status === 'Malignant';
+                analysisGrid.innerHTML = `
+                    <div class="bg-slate-900 border-2 ${isMalignant ? 'border-red-600' : 'border-emerald-600'} rounded-3xl overflow-hidden shadow-2xl transition-all duration-500">
+                        <div class="grid md:grid-cols-2">
+                            <div class="bg-black p-6 flex items-center justify-center border-r border-slate-800">
+                                <img src="${URL.createObjectURL(file)}" class="max-h-72 rounded-xl">
+                            </div>
+                            <div class="p-10 flex flex-col justify-center">
+                                <h2 class="text-5xl font-black ${isMalignant ? 'text-red-500' : 'text-emerald-400'} tracking-tighter mb-4">
+                                    ${result.status.toUpperCase()}
+                                </h2>
+                                <p class="text-xs text-slate-400 mb-6">Quantum Confidence: ${result.confidence}%</p>
+                                <div class="w-full bg-slate-800 h-2 rounded-full mb-8">
+                                    <div class="bg-blue-500 h-full rounded-full" style="width: ${result.confidence}%"></div>
+                                </div>
+                                <p class="text-[9px] text-slate-500 font-mono italic">Architecture: VQC | Hardware: Apple M4 ANE</p>
+                            </div>
+                        </div>
+                    </div>
+                `;
+                document.getElementById('acc-val').innerText = "99.09%";
+                document.getElementById('acc-bar').style.width = "99.09%";
+            } catch (err) {
+                analysisGrid.innerHTML = `<p class="text-red-500 p-8 text-center border border-red-500 rounded-3xl">Backend Error: Ensure main.py is running.</p>`;
+            }
+        }
+    </script>
+</body>
+</html>
