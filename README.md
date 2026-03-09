@@ -1,6 +1,5 @@
-<<<<<<< HEAD
+HEAD
 # Quantum-Onco-Diagnostic
-=======
 Quantum-Enhanced Oncology Diagnostic System
 
 A hybrid classical-quantum machine learning pipeline optimized for Apple M4 Neural Engine acceleration.
